@@ -122,9 +122,13 @@ TEST(ContractionProblem, OperationIdentifier)
 
 TEST(ContractionProblem, FromOperationIdentifier)
 {
-    std::vector<size_t> sizes{5, 6, 4, 2};
+    //std::vector<size_t> sizes{5, 6, 4, 2};
+    //std::vector<size_t> strides{1, 1, 2, 1, 1};
+    //std::string         identifier = "Contraction_l_AlikC_Bjlk_Cijk_Dijk";
+
+    std::vector<size_t> sizes{3, 4, 5, 6, 7};
     std::vector<size_t> empty;
-    std::string         identifier = "Contraction_l_AlikC_Bjlk_Cijk_Dijk";
+    std::string         identifier = "Contraction_lm_AilmjkC_Bilmjk_Cijk_Dijk";
     auto                problem    = ContractionProblem::FromIndexSizes(identifier,
                                                       sizes,
                                                       DataType::ComplexFloat,
@@ -139,7 +143,8 @@ TEST(ContractionProblem, FromOperationIdentifier)
 
     EXPECT_EQ(problem.operationIdentifier(), identifier);
 
-    identifier         = "Contraction_l_ALik_Bjlk_Cijk_Dijk";
+    //identifier         = "Contraction_l_ALik_Bjlk_Cijk_D
+    identifier = "Contraction_lm_AiLmjk_Bilmjk_Cijk_Dijk";
     auto mirrorProblem = ContractionProblem::FromIndexSizes(identifier,
                                                             sizes,
                                                             DataType::Float,
